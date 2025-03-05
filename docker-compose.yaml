@@ -1,0 +1,28 @@
+services:
+  documents.publicsos.org:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        WWWUSER: '${WWWUSER:-1000}'
+        WWWGROUP: '${WWWGROUP:-1000}'
+    image: izdrail/documents.publicsos.org:main
+    container_name: documents.publicsos.org
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    ports:
+      - '1121:1121'
+    environment:
+      WWWUSER: '${WWWUSER}'
+      WWWGROUP: '${WWWGROUP}'
+      LARAVEL_SAIL: 1
+      IGNITION_LOCAL_SITES_PATH: '${PWD}'
+    volumes:
+      - './application/python/:/var/www/python'
+    networks:
+      - sail
+ 
+
+networks:
+  sail:
+    driver: bridge
