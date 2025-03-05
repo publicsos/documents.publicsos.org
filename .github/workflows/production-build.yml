@@ -40,4 +40,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            izdrail/publicsos.org:production
+            izdrail/documents.publicsos.org:main
