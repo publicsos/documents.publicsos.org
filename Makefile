@@ -6,7 +6,7 @@ DOCKERFILE=Dockerfile
 DOCKER_COMPOSE_FILE=docker-compose.yaml
 
 
-build-prod:
+build:
 	docker image rm -f $(IMAGE_PROD) || true
 	docker buildx build \
 		--platform linux/amd64 \
